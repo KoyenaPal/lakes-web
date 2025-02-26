@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Model Lakes</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description"
+        content="" />
+    <meta property="og:title" content="Model Lakes" />
+    <meta property="og:url" content="https://lakes.baulab.info/" />
+    <meta property="og:image" content="https://lakes.baulab.info/images/fv-thumb.png" />
+    <meta property="og:description" content="As the number of models increases, the challenges of finding, differentiating, and understanding 
+    models become increasingly crucial. Inspired from research on data lakes, we introduce the concept of model lakes. 
+    We formalize key model lake tasks, including model attribution, versioning, search, and benchmarking, and 
+    discuss fundamental research challenges in the management of large models.">
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Model Lakes" />
+    <meta name="twitter:description"
+        content="As the number of models increases, the challenges of finding, differentiating, and understanding 
+        models become increasingly crucial. Inspired from research on data lakes, we introduce the concept of model lakes. 
+        We formalize key model lake tasks, including model attribution, versioning, search, and benchmarking, and 
+        discuss fundamental research challenges in the management of large models." />
+    <meta name="twitter:image" content="https://lakes.baulab.info/images/fv-thumb.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Math&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <style>
+        .relatedthumb {
+            float: left;
+            width: 200px;
+            margin: 3px 10px 7px 0;
+        }
+
+        .relatedblock {
+            clear: both;
+            display: inline-block;
+        }
+
+        .bold-sc {
+            font-variant: small-caps;
+            font-weight: bold;
+        }
+
+        .cite,
+        .citegroup {
+            margin-bottom: 8px;
+        }
+
+        :target {
+            background-color: yellow;
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD12LWN557"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date()); gtag('config', 'G-FD12LWN557');
+    </script>
+
+</head>
+
+<body class="nd-docs">
+    <div class="nd-pageheader">
+        <div class="container">
+            <h1 class="lead">
+                <nobr class="widenobr">Model Lakes</nobr>
+            </h1>
+            <address>
+                <nobr><a href="https://koyenapal.github.io/" target="_blank">Koyena Pal</a><sup>1</sup>,</nobr>
+                <nobr><a href="https://baulab.info/" target="_blank">David Bau<sup>1</sup></a>,</nobr>
+                <nobr><a href="https://rjmillerlab.github.io/" target="_blank">Renée Miller<sup>1 & 2</a></nobr><br>
+                <nobr><sup>1</sup><a href="https://khoury.northeastern.edu/" target="_blank">Northeastern
+                    University</a>,</nobr>
+                    <nobr><sup>2</sup><a href="https://cs.uwaterloo.ca/" target="_blank">University of Waterloo</a></nobr>
+            </address>
+            <h6 class="">
+                <nobr class="widenobr">International Conference on Extending Database Conference Technology (EDBT 2025)</nobr>
+            </h6>
+        </div>
+    </div><!-- end nd-pageheader -->
+
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: -10px">
+        </div>
+        <div class="row">
+            <div class="col">
+                  <h2>Why Model Lakes?</h2>
+                  <p><b>Data lakes</b> have revolutionized how raw, diverse, and large-scale data is stored and accessed. 
+                    Instead of forcing data into rigid structures, data lakes allow flexible discovery, annotation, and version management 
+                    — enabling users to extract insights without predefined schemas. With the current setting of model lakes ...
+                    Similarly, <b>model lakes</b> — a system containing numerous heterogeneous pre-trained models and related data
+                    in their natural formats - provide a structured way to navigate the vast and complex landscape of AI models, 
+                    making them easier to search, analyze, and utilize effectively.</p>
+
+                <br> <br>
+              <div class="text-center">
+                    <figure class="center_image">
+                    <img src="images/Paper/model-lakes-framework.png" class="bigfig">
+                    <figcaption>
+                        Model Lakes Design. A model lake stores models and processes them using techniques, like inference, 
+                        interpretability, weight-space modeling and indexing to support various user interactions. 
+                        It generates outputs like version graphs, model cards and ranked models, 
+                        refining them into human-readable results, as shown on the figure's right side.
+                    </figcaption>
+                </figure>
+                </div>
+                <br>
+                <h2>What are the model lake tasks?</h2>   
+                <p>
+                In order to navigate and understand the models in the model lake better, 
+                we standardize and formulize the following tasks</p>
+
+                <h4>1. Model Attribution</h4> 
+                <p>....</p>
+                <h4>2. Model Versioning</h4> 
+                <p>....</p>
+                <h4>3. Model Search</h4> 
+                <p>...</p>
+                <h4>4. Benchmark</h4> 
+                <p>...</p>
+
+                <h2>How to cite</h2>
+
+                <p>This work is appearing at EDBT 2025. For now, it can be cited as follows.
+                </p>
+
+                <div class="card">
+                    <h3 class="card-header">bibliography</h3>
+                    <div class="card-block">
+                        <p style="text-indent: -3em; margin-left: 3em;" class="card-text clickselect">
+                            Pal, Koyena, David Bau, and Renée J. Miller. "Model Lakes." <em>arXiv preprint arXiv:2403.02327 (2024).</em><nobr></nobr>
+                        </p>
+                    </div>
+                    <h3 class="card-header">bibtex</h3>
+                    <div class="card-block">
+                        <pre class="card-text clickselect"
+>@misc{pal2025modellakes,
+    title={Model Lakes}, 
+    author={Koyena Pal and David Bau and Renée J. Miller},
+    year={2025},
+    eprint={2403.02327},
+    archivePrefix={arXiv},
+    primaryClass={cs.DB},
+    url={https://arxiv.org/abs/2403.02327},}</pre>
+                    </div>
+                </div>
+                <!-- </p> -->
+
+            <!-- </div> -->
+            </div> <!--col -->    
+        </div> <!--row -->
+    </div> <!-- container -->
+
+    
+
+    <footer class="nd-pagefooter">
+        <div class="row">
+            <div class="col-6 col-md text-center">
+                <a href="https://baulab.info/">About the Bau Lab</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script>
+    $(document).on('click', '.clickselect', function (ev) {
+        var range = document.createRange();
+        range.selectNodeContents(this);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+    });
+</script>
+
+</html>
