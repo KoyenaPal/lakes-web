@@ -17,19 +17,52 @@ body, td, th {
     margin-bottom: 1.5rem;
     color: white;
     text-align: center;
-    background-color: #085b5caa;
+    background-color: #085b5cd3;
   }
   
   .nd-pageheader a, .nd-pageheader a.likelink {
     color: white;
   }
-  
+
+  .pdf-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      width: fit-content;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+      
+  }
+
+  .pdf-button i {
+      font-size: 24px;
+      margin-right: 8px;
+  }
+
+  /* Hover effect */
+  .pdf-button:hover {
+      background-color: #555;
+  }
+
+
+
+
+
   .nd-pagefooter {
     color: white;
     margin-top: 1.5rem;
     padding: 1rem;
     text-align: center;
-    background-color: #085b5caa;
+    background-color: #085b5cd3;
   }
   
   .nd-pagefooter a {
