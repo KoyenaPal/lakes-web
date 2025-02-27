@@ -3,7 +3,7 @@ body, td, th {
   }
   h2 {
     margin-top: 2ex;
-    margin-bottom: 3ex;
+    margin-bottom: 2ex;
   }
   h4 {
     margin-top: 3ex;
@@ -133,15 +133,18 @@ body, td, th {
   .bigfig {
     text-align: center;
     max-width: 100%;
-    width: 1000px;
+    /* width: 1000px; */
   }
+
   .smallfig {
     text-align: center;
     width: 90%;
   }
   .medfig {
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    width: 90%;
+    max-width: 90%;
   }
   
   .modal .big-modal {
