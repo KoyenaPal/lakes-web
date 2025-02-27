@@ -83,7 +83,7 @@
             <address>
                 <nobr><a href="https://koyenapal.github.io/" target="_blank">Koyena Pal</a><sup>1</sup>,</nobr>
                 <nobr><a href="https://baulab.info/" target="_blank">David Bau<sup>1</sup></a>,</nobr>
-                <nobr><a href="https://rjmillerlab.github.io/" target="_blank">Renée Miller<sup>1 & 2</a></nobr><br>
+                <nobr><a href="https://rjmillerlab.github.io/" target="_blank">Ren&eacutee Miller<sup>1 & 2</a></nobr><br>
                 <nobr><sup>1</sup><a href="https://khoury.northeastern.edu/" target="_blank">Northeastern
                     University</a>,</nobr>
                     <nobr><sup>2</sup><a href="https://cs.uwaterloo.ca/" target="_blank">University of Waterloo</a></nobr>
@@ -112,7 +112,7 @@
 
             <div class="card" style="max-width: 1020px;">
                 <div class="card-block">
-                <h3>Why Do Model Lakes Matter?</h3>
+                <h3>What is a Model Lake?</h3>
                 <br>
                 <p>The concept of <em>data lakes</em> emerged in early 2010s to collect raw, unstructured data at scale <span>&#8212;</span> laying
                     the foundation for modern big data analytics. As organizations recognized the value of vast, untapped data,
@@ -127,10 +127,10 @@
                 </div><!--card-->
 
         </div><!--row-->
-        
+        <br>
         <div class="row">
             <div class="col">
-                <h2>How can model lakes be useful?</h2>
+                <!-- <h2>How can model lakes be useful?</h2> -->
                 <div class="text-center">
                     <figure class="center_image">
                         <img src="images/Paper/model-lakes-framework.png" class="bigfig">
@@ -142,22 +142,46 @@
                         </figcaption>
                     </figure>
                 </div>
-                
-                <h2>Defining Model Lake Tasks</h2>
 
-                <p>An AI model can be analyzed from three viewpoints: according to its history, intrinsic composition, or extrinsic behavior.
-                The distinction among intrinsics, extrinsics, and history is useful because, while every model 
-ℳ = (𝒟,𝒜,f<sub>∗</sub>,θ,p<sub>θ</sub>)
- has all these characteristics, there are cases where certain aspects may be unavailable. For example, in a Model Lake, the intrinsic details of some models might be inaccessible, and some analysis methods may rely solely on extrinsic observations or historical records to understand a model’s behavior. We use this distinction to analyze possible solutions to a variety of model lake tasks.
+                <h2>Three Viewpoints of a Model</h2>
+                <p>
+                    An AI model can be analyzed from three viewpoints: 
+                    <ul>
+                        <li><strong>History</strong>: Documentation, primarily model cards that may include records of training data, methodology, and development process.</li>
+                        <li><strong>Intrinsic Composition</strong>: Model's internal structure, parameters, and associated weights.</li>
+                        <li><strong>Extrinsic Behavior</strong>: Observable outputs, responses, and interactions.</li>
+                    </ul>
+                    
+
+                    The distinction among intrinsics, extrinsics, and history is useful because, while every model 
+                    <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">M</span>
+                     = (<span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">D</span>,
+                     <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">A</span>,
+                     &fnof;<sub>∗</sub>,
+                     &theta;,
+                     <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">p<sub>&theta;</sub></span>
+                     )
+                    has all these characteristics, there are cases where certain aspects may be unavailable. 
+                    For example, in a Model Lake, the intrinsic details of some models might be inaccessible, and some analysis methods may rely solely on 
+                    extrinsic observations or historical records to understand a model’s behavior. We use this distinction to analyze possible solutions to a variety of model lake tasks.
                 </p>
+                
+                
+                <h2>The Four Categories of Model Lake Tasks</h2>
+
+                
                 <p>  
                     Model lake tasks focus on extracting and presenting insights from stored models, 
                     enabling a deeper understanding of their origins, relationships, and performance. 
-                    These tasks include tracing how a model's output was generated (<em>model attribution</em>), 
-                    identifying if and how models are derived from others (<em>model versioning</em>), 
-                    finding relevant or desired models (<em>model search</em>), and 
-                    evaluating model performance through rigorous testing (<em>benchmarking</em>).  
-                    </p>
+                    These tasks include:
+                    <ul>
+                        <li><strong><a href="#modelattribution">Model Attribution</a></strong>: Tracing how a model's output was generated.</li>
+                        <li><strong><a href="#modelversioning">Model Versioning</a></strong>: Identifying if and how models are derived from others.</li>
+                        <li><strong><a href="#modelsearch">Model Search</a></strong>: Finding relevant or desired models.</li>
+                        <li><strong><a href="#benchmarking">Benchmarking</a></strong>: Evaluating model performance through rigorous testing.</li>
+                    </ul>
+                </p>
+                <br>
                 <div class="text-center">
                 <figure class="center_image">
                     <img src="images/Paper/model-lakes-concept.png" class="d-block mx-auto medfig">
@@ -168,9 +192,15 @@
                         strengths, and how they are structured in relation to other
                         models. This process provides key insights into the models’
                         development, performance capabilities, and their positioning within the broader landscape of models. A model is
-                        defined as M = (D, A, 𝑓<sub>∗</sub>, 𝜃, 𝑝<sub>𝜃</sub>), where D (training data)
-                        and A (algorithm) can be traced through documentation,
-                        while architecture 𝑓<sub>∗</sub> and parameters 𝜃 come from accessible model weights, and behavior 𝑝𝜃
+                        defined as  <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">M</span>
+                        = (<span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">D</span>,
+                        <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">A</span>,
+                        &fnof;<sub>∗</sub>,
+                        &theta;,
+                        <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">p<sub>&theta;</sub></span>
+                        ), where <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">D</span> (training data)
+                        and <span class="mathcal" style="font-family: 'Lucida Calligraphy', 'Monotype Corsiva', 'URW Chancery L', 'Apple Chancery', 'Tex Gyre Chorus', cursive, serif; font-size:19px">A</span> (algorithm) can be traced through documentation,
+                        while architecture &fnof;<sub>∗</sub> and parameters &theta; come from accessible model weights, and behavior 𝑝𝜃
                         from observable outputs (illustrated on the upper left side of the figure).
                     </figcaption>
                 </figure>
@@ -182,56 +212,59 @@
                 <p>Preliminary work from various specialized fields—including databases, interpretability, and cybersecurity—has shaped our 
                     understanding of model lake tasks, guiding how we define and approach each one.</p>
 
-                <h4>Model Attribution</h4>
-                <p class="citation"><a href="https://link.springer.com/chapter/10.1007/3-540-44503-X_20"><img src="images/buneman-2001.png" alt="buneman-2001">Peter Buneman, Sanjeev Khanna, and Wang-Chiew Tan. Why and Where: A Characterization of Data Provenance. 2001.</a><br>
-                    <b>Notes:</b> In data lakes, data provenance is the "description of the origins of a piece of data and the process by which it arrived in a database." We extend this concept to model attribution.
-                    </p> 
-
-                <p class="citation"><a href="https://arxiv.org/abs/2308.03296"><img src="images/grosse-2023.png" alt="grosse-2023"> Roger Grosse, Juhan Bae, Cem Anil, Nelson Elhage, Alex Tamkin, Amirhossein Tajdini, Benoit Steiner, Dustin Li, Esin Durmus, Ethan Perez, Evan Hubinger, Kamilė Lukošiūtė, Karina Nguyen, Nicholas Joseph, Sam McCandlish, Jared Kaplan, Samuel R. Bowman. Studying Large Language Model Generalization with Influence Functions. 2023.</a><br>
-                    <b>Notes:</b> Influence functions aim to answer a counterfactual: how would the model's parameters (and hence its outputs) change if a given sequence were added to the training set? </p>
-                
-                <p class="citation"><a href="https://openreview.net/forum?id=zWqr3MQuNs"><img src="images/shi-2024.png" alt="shi-2024"> Weijia Shi, Anirudh Ajith, Mengzhou Xia, Yangsibo Huang, Daogao Liu, Terra Blevins, Danqi Chen, Luke Zettlemoyer. Detecting Pretraining Data from Large Language Models. 2024.</a><br>
-                    <b>Notes:</b> Given a piece of text and black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained on the provided text?  </p>
-
-
-
-                
-                <h4>Model Versioning</h4>
-                <p class="citation"><a href="https://www.vldb.org/pvldb/vol16/p1587-shraga.pdf"><img src="images/shraga-2023.png" alt="shraga-2023">Roee Shraga, Renée Miller. Explaining Dataset Changes for Semantic Data Versioning with Explain-Da-V. 2023.</a><br>
-                    <b>Notes:</b> Explain-Da-V is a framework aiming to explain changes between two given dataset versions. Explain-Da-V generates explanations that use data transformations to explain changes.
-                    </p> 
-
-                <p class="citation"><a href="https://arxiv.org/abs/2405.18432"><img src="images/horwitz-2024.png" alt="horwitz-2024"> Eliahu Horwitz, Asaf Shul, Yedid Hoshen. On the Origin of Llamas: Model Tree Heritage Recovery. 2024.</a><br>
-                    <b>Notes:</b> This paper introduces the task of Model Tree Heritage Recovery (MoTHer Recovery) for discovering Model Trees, which describes the origin of models i.e., the parent model that was used to fine-tune the target model. 
-                    We extend this definition to include multiple parent models to handle cases such as model stitching.
-                    </p> 
-                
-                <p class="citation"><a href="https://arxiv.org/abs/2308.02121"><img src="images/mu-2023.png" alt="mu-2023"> Xin Mu, Yu Wang, Yehong Zhang, Jiaqi Zhang, Hui Wang, Yang Xiang, Yue Yu. Model Provenance via Model DNA. 2023.</a><br>
-                    <b>Notes:</b> The authors propose a data- and model-driven method to encode "Model DNA" for identifying if a model is a pre-trained version of another, assuming both share the same architecture and training data.
-                    </p> 
-
-
-
-
-                <h4>Model Search</h4>
-                <p class="citation"><a href="https://dl.acm.org/doi/10.1145/3610548.3618189"><img src="images/lu-2023.png" alt="lu-2023"> Daohan Lu, Sheng-Yu Wang, Nupur Kumari, Rohan Agarwal, Mia Tang,
-                    David Bau, and Jun-Yan Zhu. Content-based Search for Deep Generative Models. 2023.</a><br>
-                    <b>Notes:</b> 
-                    This paper introduces the task of content-based model search for vision models: given a query and a large set of generative models, find the models that best match the query.  </p> 
-
-                <p class="citation"><a href="https://openaccess.thecvf.com/content_ICCV_2019/html/Achille_Task2Vec_Task_Embedding_for_Meta-Learning_ICCV_2019_paper.html"><img src="images/achille-2019.png" alt="achille-2019"> Alessandro Achille, Michael Lam, Rahul Tewari, Avinash Ravichandran, Subhransu Maji, Charless C. Fowlkes, Stefano Soatto, Pietro Perona. Task2Vec: Task Embedding for Meta-Learning. 2019.</a><br>
-                    <b>Notes:</b> The authors introduce a method to generate vectorial representations of visual classification tasks which can be used to reason about the nature of those tasks and their relations.
-                    </p> 
-                <p class="citation"><a href="https://arxiv.org/abs/2406.07536"><img src="images/wang-2024.png" alt="wang-2024"> Wenxiao Wang, Weiming Zhuang, Lingjuan Lyu. Towards Fundamentally Scalable Model Selection:
-                    Asymptotically Fast Update and Selection. 2024.</a><br>
-                    <b>Notes:</b> The authors define isolated model embedding, which refers to a subset of the model
-                    embedding family where computing the embedding of each individual model is isolated from the others.
-                    </p> 
-                
+                <div id="modelattribution">
+                    <h4>Model Attribution</h4>
+                    <p class="citation"><a href="https://link.springer.com/chapter/10.1007/3-540-44503-X_20"><img src="images/buneman-2001.png" alt="buneman-2001">Peter Buneman, Sanjeev Khanna, and Wang-Chiew Tan. Why and Where: A Characterization of Data Provenance. 2001.</a><br>
+                        <b>Notes:</b> In data lakes, data provenance is the "description of the origins of a piece of data and the process by which it arrived in a database." We extend this concept to model attribution.
+                        </p> 
+    
+                    <p class="citation"><a href="https://arxiv.org/abs/2308.03296"><img src="images/grosse-2023.png" alt="grosse-2023"> Roger Grosse, Juhan Bae, Cem Anil, Nelson Elhage, Alex Tamkin, Amirhossein Tajdini, Benoit Steiner, Dustin Li, Esin Durmus, Ethan Perez, Evan Hubinger, Kamilė Lukošiūtė, Karina Nguyen, Nicholas Joseph, Sam McCandlish, Jared Kaplan, Samuel R. Bowman. Studying Large Language Model Generalization with Influence Functions. 2023.</a><br>
+                        <b>Notes:</b> Influence functions aim to answer a counterfactual: how would the model's parameters (and hence its outputs) change if a given sequence were added to the training set? </p>
+                    
+                    <p class="citation"><a href="https://openreview.net/forum?id=zWqr3MQuNs"><img src="images/shi-2024.png" alt="shi-2024"> Weijia Shi, Anirudh Ajith, Mengzhou Xia, Yangsibo Huang, Daogao Liu, Terra Blevins, Danqi Chen, Luke Zettlemoyer. Detecting Pretraining Data from Large Language Models. 2024.</a><br>
+                        <b>Notes:</b> Given a piece of text and black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained on the provided text?  </p>    
+                </div>
                 
 
 
+                <div id="modelversioning">
+                    <h4>Model Versioning</h4>
+                    <p class="citation"><a href="https://www.vldb.org/pvldb/vol16/p1587-shraga.pdf"><img src="images/shraga-2023.png" alt="shraga-2023">Roee Shraga, Renée Miller. Explaining Dataset Changes for Semantic Data Versioning with Explain-Da-V. 2023.</a><br>
+                        <b>Notes:</b> Explain-Da-V is a framework aiming to explain changes between two given dataset versions. Explain-Da-V generates explanations that use data transformations to explain changes.
+                        </p> 
 
+                    <p class="citation"><a href="https://arxiv.org/abs/2405.18432"><img src="images/horwitz-2024.png" alt="horwitz-2024"> Eliahu Horwitz, Asaf Shul, Yedid Hoshen. On the Origin of Llamas: Model Tree Heritage Recovery. 2024.</a><br>
+                        <b>Notes:</b> This paper introduces the task of Model Tree Heritage Recovery (MoTHer Recovery) for discovering Model Trees, which describes the origin of models i.e., the parent model that was used to fine-tune the target model. 
+                        We extend this definition to include multiple parent models to handle cases such as model stitching.
+                        </p> 
+                    
+                    <p class="citation"><a href="https://arxiv.org/abs/2308.02121"><img src="images/mu-2023.png" alt="mu-2023"> Xin Mu, Yu Wang, Yehong Zhang, Jiaqi Zhang, Hui Wang, Yang Xiang, Yue Yu. Model Provenance via Model DNA. 2023.</a><br>
+                        <b>Notes:</b> The authors propose a data- and model-driven method to encode "Model DNA" for identifying if a model is a pre-trained version of another, assuming both share the same architecture and training data.
+                        </p> 
+                </div>
+
+
+
+                <div id="modelsearch">
+                    <h4>Model Search</h4>
+                    <p class="citation"><a href="https://dl.acm.org/doi/10.1145/3610548.3618189"><img src="images/lu-2023.png" alt="lu-2023"> Daohan Lu, Sheng-Yu Wang, Nupur Kumari, Rohan Agarwal, Mia Tang,
+                        David Bau, and Jun-Yan Zhu. Content-based Search for Deep Generative Models. 2023.</a><br>
+                        <b>Notes:</b> 
+                        This paper introduces the task of content-based model search for vision models: given a query and a large set of generative models, find the models that best match the query.  </p> 
+
+                    <p class="citation"><a href="https://openaccess.thecvf.com/content_ICCV_2019/html/Achille_Task2Vec_Task_Embedding_for_Meta-Learning_ICCV_2019_paper.html"><img src="images/achille-2019.png" alt="achille-2019"> Alessandro Achille, Michael Lam, Rahul Tewari, Avinash Ravichandran, Subhransu Maji, Charless C. Fowlkes, Stefano Soatto, Pietro Perona. Task2Vec: Task Embedding for Meta-Learning. 2019.</a><br>
+                        <b>Notes:</b> The authors introduce a method to generate vectorial representations of visual classification tasks which can be used to reason about the nature of those tasks and their relations.
+                        </p> 
+                    <p class="citation"><a href="https://arxiv.org/abs/2406.07536"><img src="images/wang-2024.png" alt="wang-2024"> Wenxiao Wang, Weiming Zhuang, Lingjuan Lyu. Towards Fundamentally Scalable Model Selection:
+                        Asymptotically Fast Update and Selection. 2024.</a><br>
+                        <b>Notes:</b> The authors define isolated model embedding, which refers to a subset of the model
+                        embedding family where computing the embedding of each individual model is isolated from the others.
+                        </p> 
+                </div>
+                
+
+
+                <div id="benchmarking">
                 <h4>Benchmarking</h4>
                 <p class="citation"><a href="https://openreview.net/forum?id=d7KBjmI3GmQ"><img src="images/hendrycks-2021.png" alt="hendrycks-2021"> Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn Song, Jacob Steinhardt. Measuring Massive Multitask Language Understanding. 2021.</a><br>
                     <b>Notes:</b> The authors propose a new test to measure a text model's multitask accuracy. The test
@@ -249,7 +282,7 @@
                     <b>Notes:</b> The authors publish a novel dataset of model zoos containing vision models trained on several image dataset with two CNN architectures
                     and a multiple configurations of hyperparameters.
                     </p> 
-                
+                </div>
                 
 
 
@@ -264,7 +297,7 @@
                     <h3 class="card-header">bibliography</h3>
                     <div class="card-block">
                         <p style="text-indent: -3em; margin-left: 3em;" class="card-text clickselect">
-                            Pal, Koyena, David Bau, and Renée J. Miller. "Model Lakes." <em>arXiv preprint arXiv:2403.02327 (2024).</em><nobr></nobr>
+                            Pal, Koyena, David Bau, and Ren&eacutee J. Miller. "Model Lakes." <em>arXiv preprint arXiv:2403.02327 (2024).</em><nobr></nobr>
                         </p>
                     </div>
                     <h3 class="card-header">bibtex</h3>
@@ -272,7 +305,7 @@
                         <pre class="card-text clickselect"
 >@misc{pal2025modellakes,
     title={Model Lakes}, 
-    author={Koyena Pal and David Bau and Renée J. Miller},
+    author={Koyena Pal and David Bau and Ren&eacutee J. Miller},
     year={2025},
     eprint={2403.02327},
     archivePrefix={arXiv},
